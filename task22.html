@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Background Loop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif; /* Set a font for your content */
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <img id="background">
+    <div class="content">
+       
+    </div>
+    <script>
+        // JavaScript to change the background image every 5 seconds
+        const backgroundImages = ['1.png','3.png', '4.png'];
+        let currentImageIndex = 0;
+        const backgroundElement = document.getElementById('background');
+
+        function changeBackgroundImage() {
+            backgroundElement.src = backgroundImages[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+        }
+
+        // Initial background image
+        changeBackgroundImage();
+
+        // Set an interval to change the background every 5 seconds (5000 milliseconds)
+        setInterval(changeBackgroundImage, 5000);
+    </script>
+</body>
+</html>
